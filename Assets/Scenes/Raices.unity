@@ -228,7 +228,7 @@ MonoBehaviour:
   rotationHijo1: 180
   bifurcacion: 5
   escalaAnimacion: {x: 1, y: 1, z: 1}
-  velocidadAnimacion: 1
+  velocidadAnimacion: 4
 --- !u!1 &1712691355
 GameObject:
   m_ObjectHideFlags: 0
