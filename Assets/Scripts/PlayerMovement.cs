@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour{
         }
 
         //Jump buffering implementation
-        if(Input.GetKeyDown(KeyCode.UpArrow)){
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)){
 
             jumpBufferCounter = jumpBufferTime;
             Debug.Log("Up arrow pressed");
