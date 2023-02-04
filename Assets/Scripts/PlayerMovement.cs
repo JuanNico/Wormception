@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
 
+    [SerializeField]
+    private int _lives = 3;
+    [SerializeField]
+    private int _blood = 100;
+
     Rigidbody2D playerRigid;
     CapsuleCollider2D playerCollider;
 
@@ -35,7 +40,7 @@ public class PlayerMovement : MonoBehaviour{
         horizontal = Input.GetAxisRaw("Horizontal");
 
         //Coyote time implementation
-        if(IsGrounded()){
+        if (IsGrounded()){
             coyoteTimeCounter = coyoteTime;
         }else{
             coyoteTimeCounter -= Time.deltaTime;
@@ -45,7 +50,7 @@ public class PlayerMovement : MonoBehaviour{
         if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)){
 
             jumpBufferCounter = jumpBufferTime;
-            Debug.Log("Up arrow pressed");
+            Debug.Log("Up arrow or Space button pressed");
         }else{
 
             jumpBufferCounter -= Time.deltaTime;
@@ -58,7 +63,7 @@ public class PlayerMovement : MonoBehaviour{
             jumpBufferCounter = 0;
         }
 
-        //Let us jump higher while we most pess JUMP button
+        //Let us jump higher while we must press JUMP button
         if(Input.GetKeyDown(KeyCode.UpArrow) && playerRigid.velocity.y > 0f){
 
             playerRigid.velocity = new Vector2(playerRigid.velocity.x, playerRigid.velocity.y * 0.5f);
@@ -103,6 +108,14 @@ public class PlayerMovement : MonoBehaviour{
             transform.localScale = localScale;
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log("hit: " + collision.gameObject.);
+    }
 
-    
+    public void Damage(int enemyHitPower)
+    {
+        _blood -= enemyHitPower;
+        Debug.Log("_blood: " + _blood);
+    }
 }
