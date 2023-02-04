@@ -21,18 +21,20 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
 
-    [SerializeField]
-    private int _lives = 3;
-    [SerializeField]
-    private int _blood = 100;
+
+    public int lives = 3;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
 
     Rigidbody2D playerRigid;
     CapsuleCollider2D playerCollider;
 
     void Start() {
-        
         playerRigid = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<CapsuleCollider2D>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update() {
@@ -108,14 +110,11 @@ public class PlayerMovement : MonoBehaviour{
             transform.localScale = localScale;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Debug.Log("hit: " + collision.gameObject.);
-    }
 
     public void Damage(int enemyHitPower)
     {
-        _blood -= enemyHitPower;
-        Debug.Log("_blood: " + _blood);
+        currentHealth -= enemyHitPower;
+        healthBar.SetHealth(currentHealth);
+        Debug.Log("health: " + currentHealth);
     }
 }
