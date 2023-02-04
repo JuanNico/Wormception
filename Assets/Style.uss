@@ -1,0 +1,26 @@
+.button-style {
+    height: 29px;
+    width: 112px;
+    -unity-font: url('project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&guid=58b647c5b2ec4184e9a07a561cdf0644&type=3#JazzCreateBubble');
+    color: rgba(217, 203, 255, 255);
+    background-color: rgba(7, 2, 24, 255);
+    -unity-font-style: normal;
+}
+
+.button-style:hover {
+    height: 29px;
+    width: 112px;
+    -unity-font: url('project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&guid=58b647c5b2ec4184e9a07a561cdf0644&type=3#JazzCreateBubble');
+    color: rgb(255, 203, 203);
+    background-color: rgb(40, 32, 48);
+    -unity-font-style: normal;
+}
+
+.button-style:active {
+    height: 29px;
+    width: 112px;
+    -unity-font: url('project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&guid=58b647c5b2ec4184e9a07a561cdf0644&type=3#JazzCreateBubble');
+    color: rgb(255, 203, 203);
+    background-color: rgb(56, 67, 84);
+    -unity-font-style: normal;
+}
