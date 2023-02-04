@@ -24,8 +24,11 @@ public class PlayerMovement : MonoBehaviour{
 
     public int lives = 3;
     public int maxHealth = 100;
+    public int maxEnergy = 100;
     public int currentHealth;
+    public int currentEnergy;
     public HealthBar healthBar;
+    public EnergyBar energyBar;
 
     Rigidbody2D playerRigid;
     CapsuleCollider2D playerCollider;
@@ -34,7 +37,9 @@ public class PlayerMovement : MonoBehaviour{
         playerRigid = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<CapsuleCollider2D>();
         currentHealth = maxHealth;
+        currentEnergy = maxEnergy;
         healthBar.SetMaxHealth(maxHealth);
+        energyBar.SetMaxEnergy(maxEnergy);
     }
 
     void Update() {
@@ -115,6 +120,16 @@ public class PlayerMovement : MonoBehaviour{
     {
         currentHealth -= enemyHitPower;
         healthBar.SetHealth(currentHealth);
-        Debug.Log("health: " + currentHealth);
+    }
+    public void Healing(int hearthHealth)
+    {
+        currentHealth += hearthHealth;
+        healthBar.SetHealth(currentHealth);
+    }
+
+    public void GetEnergy(int energy)
+    {
+        currentEnergy += energy;
+        energyBar.SetEnergy(currentHealth);
     }
 }
