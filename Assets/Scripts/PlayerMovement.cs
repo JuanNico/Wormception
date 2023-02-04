@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour{
 
     [Space][Header("Movement and jump")]
     float horizontal;
-    [SerializeField] float speed = 6f;
+    public float speed = 6f;
     [SerializeField] float jumpForce = 10f;
     //Coyote Time variaables
     float coyoteTime = 0.2f;
