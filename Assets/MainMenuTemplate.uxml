@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Style.uss?fileID=7433441132597879392&amp;guid=e529e6cfd4d4d0c47bcd29db28e72e58&amp;type=3#Style" />
+    <ui:VisualElement name="Background" style="background-color: rgba(56, 56, 56, 0); height: 332px; width: 925px; flex-grow: 1; justify-content: center; align-items: center; color: rgb(0, 0, 0); flex-direction: column;">
+        <ui:VisualElement style="height: 244px; width: 235px; -unity-background-image-tint-color: rgb(255, 229, 229); background-color: rgb(56, 56, 67); justify-content: center; align-items: center;">
+            <ui:Label text="Wormception" display-tooltip-when-elided="true" name="logo" style="position: absolute; top: 20px; background-color: rgb(196, 156, 253); font-size: 24px;" />
+            <ui:Button text="Start Game" display-tooltip-when-elided="true" name="start-game" class="button-style" style="height: 29px; width: 112px; -unity-font: url(&apos;project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&amp;guid=58b647c5b2ec4184e9a07a561cdf0644&amp;type=3#JazzCreateBubble&apos;); background-color: rgb(3, 2, 24);" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="quit-game" enable-rich-text="true" class="button-style" style="height: 29px; width: 112px; -unity-font: url(&apos;project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&amp;guid=58b647c5b2ec4184e9a07a561cdf0644&amp;type=3#JazzCreateBubble&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
