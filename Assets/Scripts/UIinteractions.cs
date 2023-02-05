@@ -8,7 +8,6 @@ public class UIinteractions : MonoBehaviour
 {
     public Button startGame;
     public Button quitGame;
-    public Label messageText;
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;

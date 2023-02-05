@@ -2,9 +2,16 @@
     height: 29px;
     width: 112px;
     -unity-font: url('project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&guid=58b647c5b2ec4184e9a07a561cdf0644&type=3#JazzCreateBubble');
-    color: rgba(217, 203, 255, 255);
-    background-color: rgba(7, 2, 24, 255);
+    color: rgb(217, 203, 255);
+    background-color: rgba(255, 255, 255, 0);
     -unity-font-style: normal;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    align-items: flex-start;
+    justify-content: flex-start;
+    -unity-text-align: middle-left;
 }
 
 .button-style:hover {
@@ -23,4 +30,8 @@
     color: rgb(255, 203, 203);
     background-color: rgb(56, 67, 84);
     -unity-font-style: normal;
+}
+
+.logo {
+    letter-spacing: 40px;
 }
