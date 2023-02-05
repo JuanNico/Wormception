@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/UI - with panel.unity
+    path: Assets/Scenes/UI - Start game.unity
     guid: 7d0299bc87567e442bff0915b0ed8c69
   - enabled: 1
     path: Assets/Scenes/Leve3l.unity
