@@ -191,6 +191,13 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   id: 0
+  music: {fileID: 1472163751}
+  levelSongs:
+  - {fileID: 8300000, guid: 5850c75cca817224bb2f55c81470ba02, type: 3}
+  - {fileID: 8300000, guid: 079e203fe8ac7984fad9b93aed399900, type: 3}
+  - {fileID: 8300000, guid: 64d6a100f256d6b4e8d52695e952a79d, type: 3}
+  - {fileID: 8300000, guid: d9d8d6c8cd78ea64db2c876936c2a8cb, type: 3}
+  - {fileID: 8300000, guid: 0d1b94337ede07e4d9a0c0ad9b44ca79, type: 3}
   time: 1
 --- !u!61 &1388751
 BoxCollider2D:
@@ -10034,6 +10041,13 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   id: 4
+  music: {fileID: 1472163751}
+  levelSongs:
+  - {fileID: 8300000, guid: 5850c75cca817224bb2f55c81470ba02, type: 3}
+  - {fileID: 8300000, guid: 079e203fe8ac7984fad9b93aed399900, type: 3}
+  - {fileID: 8300000, guid: 64d6a100f256d6b4e8d52695e952a79d, type: 3}
+  - {fileID: 8300000, guid: d9d8d6c8cd78ea64db2c876936c2a8cb, type: 3}
+  - {fileID: 8300000, guid: 0d1b94337ede07e4d9a0c0ad9b44ca79, type: 3}
   time: 1
 --- !u!61 &471746417
 BoxCollider2D:
@@ -19702,6 +19716,13 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   id: 2
+  music: {fileID: 1472163751}
+  levelSongs:
+  - {fileID: 8300000, guid: 5850c75cca817224bb2f55c81470ba02, type: 3}
+  - {fileID: 8300000, guid: 079e203fe8ac7984fad9b93aed399900, type: 3}
+  - {fileID: 8300000, guid: 64d6a100f256d6b4e8d52695e952a79d, type: 3}
+  - {fileID: 8300000, guid: d9d8d6c8cd78ea64db2c876936c2a8cb, type: 3}
+  - {fileID: 8300000, guid: 0d1b94337ede07e4d9a0c0ad9b44ca79, type: 3}
   time: 1
 --- !u!61 &1116527055
 BoxCollider2D:
@@ -28734,6 +28755,13 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   id: 3
+  music: {fileID: 1472163751}
+  levelSongs:
+  - {fileID: 8300000, guid: 5850c75cca817224bb2f55c81470ba02, type: 3}
+  - {fileID: 8300000, guid: 079e203fe8ac7984fad9b93aed399900, type: 3}
+  - {fileID: 8300000, guid: 64d6a100f256d6b4e8d52695e952a79d, type: 3}
+  - {fileID: 8300000, guid: d9d8d6c8cd78ea64db2c876936c2a8cb, type: 3}
+  - {fileID: 8300000, guid: 0d1b94337ede07e4d9a0c0ad9b44ca79, type: 3}
   time: 1
 --- !u!61 &1419845915
 BoxCollider2D:
@@ -34102,7 +34130,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 3b3166c615c73fb4da819d2d08b3c5b9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 64412d330686de542b1efef50aba7bf2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7a12baac835f06e46a3ff0a3c7f71f6b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -39727,7 +39755,7 @@ MonoBehaviour:
   - {r: 0, g: 0.89411765, b: 1, a: 1}
   - {r: 0.5411765, g: 0, b: 0.90588236, a: 1}
   - {r: 0.90588236, g: 0, b: 0.29803923, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 0}
   vignetteColors:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
@@ -39735,6 +39763,13 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   id: 1
+  music: {fileID: 1472163751}
+  levelSongs:
+  - {fileID: 8300000, guid: 5850c75cca817224bb2f55c81470ba02, type: 3}
+  - {fileID: 8300000, guid: 079e203fe8ac7984fad9b93aed399900, type: 3}
+  - {fileID: 8300000, guid: 64d6a100f256d6b4e8d52695e952a79d, type: 3}
+  - {fileID: 8300000, guid: d9d8d6c8cd78ea64db2c876936c2a8cb, type: 3}
+  - {fileID: 8300000, guid: 0d1b94337ede07e4d9a0c0ad9b44ca79, type: 3}
   time: 1
 --- !u!61 &1851666273
 BoxCollider2D:

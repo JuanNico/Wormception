@@ -11,6 +11,7 @@ public class ColorTrigger : MonoBehaviour
     public int id;
     bool startchanging;
     public AudioSource music;
+    public AudioClip[] levelSongs;
     [SerializeField] int time;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,8 @@ public class ColorTrigger : MonoBehaviour
 
     IEnumerator WaitToChange()
     {
+        music.clip = levelSongs[id];
+        music.Play();
         yield return new WaitForSeconds(10);
         startchanging = false;
     }
