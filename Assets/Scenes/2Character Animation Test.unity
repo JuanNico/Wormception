@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 851480911}
   - component: {fileID: 851480910}
   - component: {fileID: 851480913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,8 +415,21 @@ PrefabInstance:
       propertyPath: vida
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2278167222716685311, guid: 5b4d9ebd59ed5ac46bffd3ac6553c0d1, type: 3}
+      propertyPath: morir
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278167222716685311, guid: 5b4d9ebd59ed5ac46bffd3ac6553c0d1, type: 3}
+      propertyPath: noCaminar
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b4d9ebd59ed5ac46bffd3ac6553c0d1, type: 3}
+--- !u!1 &2006043643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6632426570362732730, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+  m_PrefabInstance: {fileID: 6632426570944110304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6632426570944110304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,9 +437,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6632426568969745787, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+      propertyPath: wormie
+      value: 
+      objectReference: {fileID: 2006043643}
     - target: {fileID: 6632426570362732730, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
       propertyPath: m_Name
       value: WormieParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632426570362732733, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+      propertyPath: "Da\xF1oRecibir"
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6632426570362732734, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
       propertyPath: m_RootOrder

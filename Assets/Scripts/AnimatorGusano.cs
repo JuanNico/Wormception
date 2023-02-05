@@ -11,84 +11,93 @@ public class AnimatorGusano : MonoBehaviour
     public float vidaGusano = 10;
     public bool control = false;
     public float DañoRecibir = -0.5f;
+    public Vector3 escalaInicial; 
+    public GameObject padreGusano;
+
 
    
 
     void Start()
     {
         anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
+        escalaInicial= gameObject.transform.localScale;
     }
 
      void FixedUpdate()
     {
       
-      
-                    //caminar con normal o con remolino
-        anim.SetBool("Walking", false);
-        anim.SetBool("Swirl", false);
-        if(Input.GetKey("d") || Input.GetKey("right") && control==false)
+        if(control==false)
         {
-           gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);  
-          if(remolino ==true)
+            Debug.Log("update");
+                        //caminar con normal o con remolino
+            anim.SetBool("Walking", false);
+            anim.SetBool("Swirl", false);
+            if(Input.GetKey("d") || Input.GetKey("right"))
+            {
+               gameObject.transform.localScale = new Vector3 (escalaInicial.x * 1f,escalaInicial.y , escalaInicial.z);  
+              if(remolino ==true)
 
-          {
-            anim.SetBool("Swirl", true);
-          }
-          else
-          {
-            anim.SetBool("Walking", true);
-          }  
-        }
+              {
+                anim.SetBool("Swirl", true);
+              }
+              else
+              {
+                anim.SetBool("Walking", true);
+              }  
+            }
 
-        if(Input.GetKey("left") || Input.GetKey("a") && control==false)
-        {
-        
-        gameObject.transform.localScale = new Vector3 (-1f, 1f, 1f);
-          if(remolino ==true)
-          {
-            anim.SetBool("Swirl", true);
-          }
-          else
-          {
-            anim.SetBool("Walking", true);
-          }  
-        }
+            if(Input.GetKey("left") || Input.GetKey("a"))
+            {
+            
+            gameObject.transform.localScale = new Vector3 (escalaInicial.x * -1f,escalaInicial.y , escalaInicial.z);
+              if(remolino ==true)
+              {
+                anim.SetBool("Swirl", true);
+              }
+              else
+              {
+                anim.SetBool("Walking", true);
+              }  
+            }
 
-            //Saltar
-         anim.SetBool("Jump", false);
-        if(Input.GetKey("space") || Input.GetKey("up") && control==false)
-        {
-            anim.SetBool("Jump", true);
-            saltando = true;
-           StartCoroutine(WaitS());
-            saltando = false;
-        }
-        
-            //Ataque
-        anim.SetBool("Attack", false);
-        if(Input.GetKey("q") && control==false)
-        {
-            anim.SetBool("Attack", true);
+                //Saltar
+             anim.SetBool("Jump", false);
+            if(Input.GetKey("space") || Input.GetKey("up"))
+            {
+                anim.SetBool("Jump", true);
+                saltando = true;
+               StartCoroutine(WaitS());
+                saltando = false;
+            }
+            
+                //Ataque
+            anim.SetBool("Attack", false);
+            if(Input.GetKey("q"))
+            {
+                anim.SetBool("Attack", true);
 
-           
-        }
+               
+            }
 
-            // Caida
+                // Caida
 
-         anim.SetBool("Falling", false);
-        if( callendo == true && saltando == false)
-        {
-            anim.SetBool("Falling", true);    
-        }
+             anim.SetBool("Falling", false);
+            if( callendo == true)
+            {
+                anim.SetBool("Falling", true);    
+            }
 
-            // Daños
+                // Daños
 
-         anim.SetBool("Hit it!", false);
-         anim.SetBool("Memory", false);
-        if(vidaGusano<1f)
-        {
-            MorirGusano();
-        }
+             anim.SetBool("Hit it!", false);
+             anim.SetBool("Memory", false);
+
+            if(vidaGusano<1f)
+            {
+                MorirGusano();
+
+            }
+        }    
     }
 
     private IEnumerator WaitS()
@@ -99,6 +108,7 @@ public class AnimatorGusano : MonoBehaviour
     }
 
     //Falta decidir si se usa OnCollisionStay2D o OnCollisionEnter2D
+    /*
     private void OnCollisionStay2D(Collision2D collision)
     {
        if(collision.gameObject.CompareTag("1"))
@@ -107,17 +117,14 @@ public class AnimatorGusano : MonoBehaviour
          anim.SetBool("Hit it!", true);
        }
     }
-    
+    */
     public void MorirGusano()
     {
-        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        padreGusano.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         anim.SetBool("Memory", true);
         gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         Debug.Log("murio");
         control = true;
     }
-    public void PerderControl()
-    {
-       
-    }
+  
 }
