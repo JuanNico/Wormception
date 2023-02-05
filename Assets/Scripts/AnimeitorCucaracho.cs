@@ -44,8 +44,8 @@ public class AnimeitorCucaracho : MonoBehaviour
         anim.SetBool("She died", false);
         if(morir == true)
         {
-           
-           Morir();
+           anim.SetBool("She died", true);
+         
         }
 
         // patrullar 
@@ -80,6 +80,7 @@ public class AnimeitorCucaracho : MonoBehaviour
         if(vida < 0)
         {
             Morir();
+
         }
      }
     private void Morir()
@@ -87,5 +88,6 @@ public class AnimeitorCucaracho : MonoBehaviour
          anim.SetBool("She died", true);
          velocidadMovimiento = 0;
          gameObject.tag = "0";
+         morir = true;
     }
 }

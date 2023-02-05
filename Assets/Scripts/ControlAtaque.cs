@@ -8,6 +8,8 @@ public class ControlAtaque : MonoBehaviour
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
     [SerializeField] private float dañoGolpe;
+    [SerializeField] GameObject wormie;
+    public bool controlGusano = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +19,16 @@ public class ControlAtaque : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if(Input.GetKey("q"))
+        controlGusano = wormie.GetComponent<AnimatorGusano>().control;
+        if(controlGusano==false)
         {
-            Golpe();  
 
+             if(Input.GetKey("q"))
+            
+            {
+                Golpe();  
+
+            }
         }
     }
     public void Golpe()
@@ -31,6 +39,8 @@ public class ControlAtaque : MonoBehaviour
         {
             if(colisionador.CompareTag("1"))
             {
+                Debug.Log("colision");
+
                 colisionador.transform.GetComponent<AnimeitorCucaracho>().TomarGolpe();
               
             }

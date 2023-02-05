@@ -8267,6 +8267,10 @@ PrefabInstance:
       value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 6632426568969745787, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+      propertyPath: wormie
+      value: 
+      objectReference: {fileID: 1238349912}
+    - target: {fileID: 6632426568969745787, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
       propertyPath: radioGolpe
       value: 1
       objectReference: {fileID: 0}
@@ -8282,9 +8286,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormieParent
       objectReference: {fileID: 0}
+    - target: {fileID: 6632426570362732733, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+      propertyPath: vidaGusano
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632426570362732733, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+      propertyPath: padreGusano
+      value: 
+      objectReference: {fileID: 1925296221}
     - target: {fileID: 6632426570362732734, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6632426570362732734, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
       propertyPath: m_LocalScale.x
@@ -17320,7 +17332,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1925296225}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1201595656
 MonoBehaviour:
@@ -17417,6 +17429,8 @@ MonoBehaviour:
   vidaGusano: 10
   control: 0
   "Da\xF1oRecibir": -0.5
+  escalaInicial: {x: 0, y: 0, z: 0}
+  padreGusano: {fileID: 0}
 --- !u!1 &1209812209
 GameObject:
   m_ObjectHideFlags: 0
@@ -17857,6 +17871,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1238349912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6632426569132409612, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+  m_PrefabInstance: {fileID: 389479699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1240886720
 GameObject:
   m_ObjectHideFlags: 0
@@ -35241,6 +35260,11 @@ Transform:
   m_Father: {fileID: 960955786}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1904599924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6632426570362732730, guid: d27cb7acd765ce9479eed6cd56676b8e, type: 3}
+  m_PrefabInstance: {fileID: 389479699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1911824792
 GameObject:
   m_ObjectHideFlags: 0
@@ -35591,6 +35615,7 @@ GameObject:
   - component: {fileID: 1925296223}
   - component: {fileID: 1925296222}
   - component: {fileID: 1925296226}
+  - component: {fileID: 1925296227}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -35699,8 +35724,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1201595655}
   - {fileID: 733658764}
+  - {fileID: 1201595655}
   - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -35730,6 +35755,21 @@ MonoBehaviour:
   currentEnergy: 0
   healthBar: {fileID: 1326322713}
   energyBar: {fileID: 1338799821}
+--- !u!114 &1925296227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925296221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d241be050c19fe8408d6d241cdd03d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hijoGusano: {fileID: 1904599924}
+  "da\xF1oGusano": 0
+  GusanoVida: 0
 --- !u!1 &1950275785
 GameObject:
   m_ObjectHideFlags: 0
