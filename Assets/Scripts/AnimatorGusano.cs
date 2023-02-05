@@ -8,7 +8,9 @@ public class AnimatorGusano : MonoBehaviour
     public bool remolino = false;
     public bool saltando = false;
     public bool callendo = false;    
-    public int vidaGusano = 10;
+    public float vidaGusano = 10;
+    public bool control = false;
+    public float DañoRecibir = -0.5f;
 
    
 
@@ -24,7 +26,7 @@ public class AnimatorGusano : MonoBehaviour
                     //caminar con normal o con remolino
         anim.SetBool("Walking", false);
         anim.SetBool("Swirl", false);
-        if(Input.GetKey("d") || Input.GetKey("right"))
+        if(Input.GetKey("d") || Input.GetKey("right") && control==false)
         {
            gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);  
           if(remolino ==true)
@@ -38,7 +40,7 @@ public class AnimatorGusano : MonoBehaviour
           }  
         }
 
-        if(Input.GetKey("left") || Input.GetKey("a"))
+        if(Input.GetKey("left") || Input.GetKey("a") && control==false)
         {
         
         gameObject.transform.localScale = new Vector3 (-1f, 1f, 1f);
@@ -54,15 +56,17 @@ public class AnimatorGusano : MonoBehaviour
 
             //Saltar
          anim.SetBool("Jump", false);
-        if(Input.GetKey("space") || Input.GetKey("up"))
+        if(Input.GetKey("space") || Input.GetKey("up") && control==false)
         {
             anim.SetBool("Jump", true);
-           
+            saltando = true;
+           StartCoroutine(WaitS());
+            saltando = false;
         }
         
             //Ataque
         anim.SetBool("Attack", false);
-        if(Input.GetKey("q"))
+        if(Input.GetKey("q") && control==false)
         {
             anim.SetBool("Attack", true);
 
@@ -74,11 +78,46 @@ public class AnimatorGusano : MonoBehaviour
          anim.SetBool("Falling", false);
         if( callendo == true && saltando == false)
         {
-            anim.SetBool("Falling", true); 
-           
+            anim.SetBool("Falling", true);    
+        }
+
+            // Daños
+
+         anim.SetBool("Hit it!", false);
+         anim.SetBool("Memory", false);
+        if(vidaGusano<1f)
+        {
+            MorirGusano();
         }
     }
+
+    private IEnumerator WaitS()
+    {
+        Debug.Log("Empezando a esperar");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Finalizando la espera");
+    }
+
+    //Falta decidir si se usa OnCollisionStay2D o OnCollisionEnter2D
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+       if(collision.gameObject.CompareTag("1"))
+       {
+        vidaGusano = vidaGusano + DañoRecibir;
+         anim.SetBool("Hit it!", true);
+       }
+    }
     
-    
-    
+    public void MorirGusano()
+    {
+        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        anim.SetBool("Memory", true);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        Debug.Log("murio");
+        control = true;
+    }
+    public void PerderControl()
+    {
+       
+    }
 }

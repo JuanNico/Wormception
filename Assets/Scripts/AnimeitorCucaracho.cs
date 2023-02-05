@@ -86,5 +86,6 @@ public class AnimeitorCucaracho : MonoBehaviour
     {
          anim.SetBool("She died", true);
          velocidadMovimiento = 0;
+         gameObject.tag = "0";
     }
 }

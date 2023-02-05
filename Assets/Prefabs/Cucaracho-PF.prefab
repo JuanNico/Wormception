@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2278167221662234698}
   m_Layer: 0
   m_Name: Cucaracho-PF
-  m_TagString: Enemigo
+  m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 8492355097198546102}
   m_Layer: 0
   m_Name: EL cucaracho parent
-  m_TagString: Enemigo
+  m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 33b35ef0dd1b34f5a9f0b559bd017691, type: 3}
       propertyPath: m_TagString
-      value: Enemigo
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8452126749783394402, guid: 33b35ef0dd1b34f5a9f0b559bd017691, type: 3}
       propertyPath: m_Bounds.m_Center.x
