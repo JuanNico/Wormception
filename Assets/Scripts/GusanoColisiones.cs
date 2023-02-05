@@ -7,6 +7,7 @@ public class GusanoColisiones : MonoBehaviour
     [SerializeField] GameObject hijoGusano;
     [SerializeField] public float dañoGusano;
     [SerializeField] public float GusanoVida;
+    [SerializeField] GameObject BarraVida;
     Animator anim;
 
     void Start()
@@ -31,8 +32,9 @@ public class GusanoColisiones : MonoBehaviour
     {
        if(collision.gameObject.CompareTag("1"))
        {
-        GusanoVida = GusanoVida + dañoGusano;
-         anim.SetBool("Hit it!", true);
+            GusanoVida = GusanoVida + dañoGusano;
+            BarraVida.GetComponent<HealthBar>().SetHealth(Mathf.RoundToInt(GusanoVida));
+            anim.SetBool("Hit it!", true);
        }
     }
     

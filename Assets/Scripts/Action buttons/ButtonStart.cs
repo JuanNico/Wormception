@@ -9,6 +9,6 @@ public class ButtonStart : MonoBehaviour
     public void StartGamePressed()
     {
         Debug.Log("Start");
-        SceneManager.LoadScene("Leve3l");
+        SceneManager.LoadScene("Level");
     }
 }

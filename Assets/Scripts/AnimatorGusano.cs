@@ -13,6 +13,11 @@ public class AnimatorGusano : MonoBehaviour
     public float DañoRecibir = -0.5f;
     public Vector3 escalaInicial; 
     public GameObject padreGusano;
+    private float moveX;
+    private bool mirandoDerecha;
+    public Vector3 posicion1;
+    public Vector3 posicion2;
+    public float velocidadMuerte = 0.5f;
 
 
    
@@ -32,37 +37,80 @@ public class AnimatorGusano : MonoBehaviour
                         //caminar con normal o con remolino
             anim.SetBool("Walking", false);
             anim.SetBool("Swirl", false);
+
+            if(remolino)
+            {
+               anim.SetBool("Swirl", true); 
+            }
+            
+
+
+
+
             if(Input.GetKey("d") || Input.GetKey("right"))
             {
+                moveX = 1;
                gameObject.transform.localScale = new Vector3 (escalaInicial.x * 1f,escalaInicial.y , escalaInicial.z);  
-              if(remolino ==true)
-
-              {
-                anim.SetBool("Swirl", true);
-              }
-              else
-              {
+              
                 anim.SetBool("Walking", true);
-              }  
+                
             }
 
             if(Input.GetKey("left") || Input.GetKey("a"))
             {
             
             gameObject.transform.localScale = new Vector3 (escalaInicial.x * -1f,escalaInicial.y , escalaInicial.z);
-              if(remolino ==true)
+            
+                anim.SetBool("Walking", true);
+            }
+
+            if(remolino ==true)
               {
                 anim.SetBool("Swirl", true);
               }
-              else
-              {
-                anim.SetBool("Walking", true);
-              }  
+
+                //nuevo codigo de correcion
+            posicion1 = gameObject.transform.position;
+            IEnumerator WaitT()
+                {
+                    yield return new WaitForSeconds(1f);
+                }
+            StartCoroutine(WaitT());
+            posicion2 = gameObject.transform.position;
+            moveX = posicion2.x - posicion1.x;
+
+
+            if(moveX<1)
+            {
+                if(mirandoDerecha)
+                {
+                    gameObject.transform.localScale = new Vector3 (escalaInicial.x * 1f,escalaInicial.y , escalaInicial.z);
+                }
+                else
+                {
+                    gameObject.transform.localScale = new Vector3 (escalaInicial.x * -1f,escalaInicial.y , escalaInicial.z);
+                }
             }
+
+            if(moveX==0)
+            {
+                if(mirandoDerecha)
+                {
+                    gameObject.transform.localScale = new Vector3 (escalaInicial.x * 1f,escalaInicial.y , escalaInicial.z);
+                }
+                else
+                {
+                    gameObject.transform.localScale = new Vector3 (escalaInicial.x * -1f,escalaInicial.y , escalaInicial.z);
+                }
+            }
+
+            
+
+
 
                 //Saltar
              anim.SetBool("Jump", false);
-            if(Input.GetKey("space") || Input.GetKey("up"))
+            if(Input.GetKey("space"))
             {
                 anim.SetBool("Jump", true);
                 saltando = true;
@@ -98,6 +146,9 @@ public class AnimatorGusano : MonoBehaviour
 
             }
         }    
+
+        // para la barra de vida
+
     }
 
     private IEnumerator WaitS()
@@ -120,11 +171,26 @@ public class AnimatorGusano : MonoBehaviour
     */
     public void MorirGusano()
     {
+        
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x + -0.0001f, gameObject.transform.position.y, gameObject.transform.position.z);
         padreGusano.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         anim.SetBool("Memory", true);
         gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         Debug.Log("murio");
         control = true;
+        Vector3 force = new Vector3(velocidadMuerte, 0, 0);
+        //padreGusano.GetComponent<Rigidbody2D>().AddForce(force * Time.deltaTime);
+        /*
+        if(moveX<1)
+            {
+               gameObject.transform.position = new Vector3(gameObject.transform.position.x + -0.0001f, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+        else
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 0.0001f, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+        */
+        
     }
   
 }
