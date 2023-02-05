@@ -5,10 +5,11 @@ using UnityEngine;
 public class Hearts : MonoBehaviour
 {
     private int heartHealth = 20;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,7 +25,8 @@ public class Hearts : MonoBehaviour
         if (player != null)
         {
             player.Healing(heartHealth);
-            Destroy(this.gameObject);
+            anim.SetTrigger("MeatierPick");
+            Destroy(this.gameObject, 1);
         }
     }
 }

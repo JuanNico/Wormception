@@ -19,6 +19,7 @@ public class InitialPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player.GetComponentInChildren<AnimatorGusano>().remolino = true;
         player.GetComponent<PlayerMovement>().enabled = false;
         player.GetComponent<Rigidbody2D>().isKinematic = true;
         player.GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -54,6 +55,7 @@ public class InitialPath : MonoBehaviour
         }
         else
         {
+            player.GetComponentInChildren<AnimatorGusano>().remolino = false;
             print("arrival");
             player.GetComponent<PlayerMovement>().enabled = true;
             player.GetComponent<Rigidbody2D>().gravityScale = 2;
