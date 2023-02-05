@@ -36,14 +36,15 @@ public class ColorTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            music.Stop();
+            music.clip = levelSongs[id];
+            music.Play();
             startchanging = true;
         }
     }
 
     IEnumerator WaitToChange()
     {
-        music.clip = levelSongs[id];
-        music.Play();
         yield return new WaitForSeconds(10);
         startchanging = false;
     }
