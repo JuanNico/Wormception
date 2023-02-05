@@ -30,5 +30,6 @@ public class MemoryTrigger : MonoBehaviour
     {
         character.GetComponent<PlayerMovement>().speed = 6;
         memory.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
