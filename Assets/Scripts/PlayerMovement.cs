@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour{
 
         //Activate Jump if player is in the ground and the key is pressed
         if(coyoteTimeCounter > 0f && jumpBufferCounter > 0){
-
+            print("jump");
             playerRigid.velocity = new Vector2(playerRigid.velocity.x, jumpForce);
             jumpBufferCounter = 0;
         }
