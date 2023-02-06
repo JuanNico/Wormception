@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimatorGusano : MonoBehaviour
 {
@@ -179,18 +180,14 @@ public class AnimatorGusano : MonoBehaviour
         Debug.Log("murio");
         control = true;
         Vector3 force = new Vector3(velocidadMuerte, 0, 0);
-        //padreGusano.GetComponent<Rigidbody2D>().AddForce(force * Time.deltaTime);
-        /*
-        if(moveX<1)
-            {
-               gameObject.transform.position = new Vector3(gameObject.transform.position.x + -0.0001f, gameObject.transform.position.y, gameObject.transform.position.z);
-            }
-        else
-            {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 0.0001f, gameObject.transform.position.y, gameObject.transform.position.z);
-            }
-        */
+
+        StartCoroutine(WaitToDie());
         
+    }
+    IEnumerator WaitToDie()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(2);
     }
   
 }

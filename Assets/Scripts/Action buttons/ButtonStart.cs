@@ -11,4 +11,8 @@ public class ButtonStart : MonoBehaviour
         Debug.Log("Start");
         SceneManager.LoadScene("Level");
     }
+    public void Home()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
