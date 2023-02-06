@@ -18,12 +18,13 @@ public class Hearts : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement player = collision.transform.GetComponent<PlayerMovement>();
 
         if (player != null)
         {
+            print("player catch");
             player.Healing(heartHealth);
             anim.SetTrigger("MeatierPick");
             Destroy(this.gameObject, 1);
