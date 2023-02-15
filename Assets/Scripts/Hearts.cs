@@ -6,6 +6,7 @@ public class Hearts : MonoBehaviour
 {
     private int heartHealth = 20;
     Animator anim;
+    [SerializeField] private AudioClip comer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class Hearts : MonoBehaviour
             print("player catch");
             player.Healing(heartHealth);
             anim.SetTrigger("MeatierPick");
+            AudioController.Instance.EjecutarSonido(comer);
             Destroy(this.gameObject, 1);
         }
     }

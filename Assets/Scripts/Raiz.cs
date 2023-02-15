@@ -6,6 +6,8 @@ public class Raiz : MonoBehaviour
 {
     public GameObject prefactObjeto;
     public GameObject padreObjeto;
+    public GameObject[] punto;
+    public int incrementoPunto = 0;
     public int anguloMin = -90;
     public int anguloMax = 90;
     public float distanciaY = 3;
@@ -14,14 +16,10 @@ public class Raiz : MonoBehaviour
     public Vector3 escalaAnimacion = new Vector3(1f,1f,1f);
     public float velocidadAnimacion = 1;
     public float alturaY = 1.5f;
+    public int mySortingLayer;
     // Start is called before the first frame update
 
-    
-    void Start()
-    {
-        
-       
-    }
+
     
     void FixedUpdate()
     {
@@ -343,7 +341,7 @@ public class Raiz : MonoBehaviour
     }
 
  
-     void Raiz2()
+     public void Raiz2()
      {
 
     
@@ -378,6 +376,7 @@ public class Raiz : MonoBehaviour
                    LeanTween.scale(hijo3, escalaAnimacion, velocidadAnimacion).setEaseOutQuad();
                 }
              StartCoroutine(Wait1());
+             incrementoPunto = incrementoPunto + 1;
             if(bifurcacion>= 2)
             {
                 GameObject hijo21 =  Instantiate(prefactObjeto);
@@ -642,28 +641,21 @@ public class Raiz : MonoBehaviour
     
     }
 
-  void Raiz3()
+  public void Raiz3()
      {
      //crea el primer hijo
-        GameObject hijo1 = Instantiate(prefactObjeto);
-         
-        hijo1.transform.localPosition = padreObjeto.transform.position;
-
-        LeanTween.scale(hijo1, escalaAnimacion, velocidadAnimacion).setEaseOutQuad();
-
-        hijo1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 11;
-
-
+         //padreObjeto.transform.localPosition = punto.transform.localPosition;
         if(bifurcacion>= 1)
         {
                 //crea el sgundo hijo lo posiciona y da una rotación aliatoria en Z
             GameObject hijo2 =  Instantiate(prefactObjeto);
-            hijo2.transform.parent = hijo1.transform;
-            hijo2.transform.localPosition = new Vector3(0,distanciaY,0);
+            hijo2.transform.parent = padreObjeto.transform;
+            //hijo2.transform.localPosition = new Vector3(0,distanciaY,0);
+            hijo2.transform.localPosition = punto[incrementoPunto].transform.localPosition;
                 // se ajustan los angulos para que la raiz centran apunte mas al fondo
-            int randomNumber = Random.Range(-60, 60);
+            int randomNumber = Random.Range(anguloMin, anguloMax);
             hijo2.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber);
-            hijo2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
+            hijo2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
              IEnumerator Wait()
                 {
                     yield return new WaitForSeconds(velocidadAnimacion);
@@ -673,27 +665,30 @@ public class Raiz : MonoBehaviour
 
                  //crea el tercer hijo lo posiciona y da una rotación aliatoria en Z
             GameObject hijo3 =  Instantiate(prefactObjeto);
-            hijo3.transform.parent = hijo1.transform;
-            hijo3.transform.localPosition = new Vector3(0,distanciaY,0);
+            hijo3.transform.parent = padreObjeto.transform;
+           // hijo3.transform.localPosition = new Vector3(0,distanciaY,0);
+            hijo3.transform.localPosition = punto[incrementoPunto].transform.localPosition;
             int randomNumber2 = Random.Range(anguloMin, anguloMax);
             hijo3.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber2);
-             hijo3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
+            mySortingLayer -= 1;
+             hijo3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
             IEnumerator Wait1()
                 {
                     yield return new WaitForSeconds(velocidadAnimacion);
                    LeanTween.scale(hijo3, escalaAnimacion, velocidadAnimacion).setEaseOutQuad();
                 }
              StartCoroutine(Wait1());
+             incrementoPunto = incrementoPunto + 1;
             if(bifurcacion>= 2)
             {
                 GameObject hijo21 =  Instantiate(prefactObjeto);
                 hijo21.transform.parent = hijo2.transform;
                 hijo21.transform.localPosition = new Vector3(0,distanciaY,0); 
                     // se ajustan los angulos para que la raiz centran apunte mas al fondo
-                int randomNumber21 = Random.Range(-60, 60);
+                int randomNumber21 = Random.Range(anguloMin, anguloMax);
                 hijo21.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber21);
-
-                 hijo21.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
+                mySortingLayer -= 1;
+                 hijo21.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
                  IEnumerator Wait3()
                     {
                         yield return new WaitForSeconds(velocidadAnimacion + velocidadAnimacion);
@@ -706,7 +701,8 @@ public class Raiz : MonoBehaviour
                 hijo22.transform.localPosition = new Vector3(0,distanciaY,0); 
                 int randomNumber22 = Random.Range(anguloMin, anguloMax);
                 hijo21.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber22);
-                hijo22.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
+                mySortingLayer -= 1;
+                hijo22.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
                 IEnumerator Wait4()
                     {
                         yield return new WaitForSeconds(velocidadAnimacion + velocidadAnimacion);
@@ -719,7 +715,8 @@ public class Raiz : MonoBehaviour
                 hijo31.transform.localPosition = new Vector3(0,distanciaY,0); 
                 int randomNumber31 = Random.Range(anguloMin, anguloMax);
                 hijo31.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber31);
-                 hijo31.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
+                mySortingLayer -= 1;
+                hijo31.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
                 IEnumerator Wait5()
                     {
                         yield return new WaitForSeconds(velocidadAnimacion + velocidadAnimacion);
@@ -732,8 +729,8 @@ public class Raiz : MonoBehaviour
                 hijo32.transform.localPosition = new Vector3(0,distanciaY,0); 
                 int randomNumber32 = Random.Range(anguloMin, anguloMax);
                 hijo31.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber32);
-
-                 hijo32.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
+                mySortingLayer -= 1;
+                 hijo32.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
                 IEnumerator Wait6()
                     {
                         yield return new WaitForSeconds(velocidadAnimacion + velocidadAnimacion);
@@ -748,8 +745,8 @@ public class Raiz : MonoBehaviour
                     hijo211.transform.localPosition = new Vector3(0,distanciaY,0); 
                     int randomNumber211 = Random.Range(anguloMin, anguloMax);
                     hijo211.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber211);
-
-                     hijo211.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 8;
+                    mySortingLayer -= 1;
+                     hijo211.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                     IEnumerator Wait7()
                         {
@@ -763,8 +760,8 @@ public class Raiz : MonoBehaviour
                     hijo212.transform.localPosition = new Vector3(0,distanciaY,0); 
                     int randomNumber212 = Random.Range(anguloMin, anguloMax);
                     hijo212.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber212);
-
-                    hijo212.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 8;
+                    mySortingLayer -= 1;
+                    hijo212.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                     IEnumerator Wait8()
                         {
@@ -778,8 +775,8 @@ public class Raiz : MonoBehaviour
                     hijo221.transform.localPosition = new Vector3(0,distanciaY,0); 
                     int randomNumber221 = Random.Range(anguloMin, anguloMax);
                     hijo221.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber221);
-
-                    hijo221.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 8;
+                    mySortingLayer -= 1;
+                    hijo221.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                     IEnumerator Wait9()
                         {
@@ -794,8 +791,8 @@ public class Raiz : MonoBehaviour
                     hijo222.transform.localPosition = new Vector3(0,distanciaY,0); 
                     int randomNumber222 = Random.Range(anguloMin, anguloMax);
                     hijo222.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber222);
-
-                    hijo222.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 8;
+                    mySortingLayer -= 1;
+                    hijo222.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                     IEnumerator Wait10()
                         {
@@ -815,8 +812,8 @@ public class Raiz : MonoBehaviour
                         hijo2211.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber2211 = Random.Range(anguloMin, anguloMax);
                         hijo2211.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber2211);
-
-                        hijo2211.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        mySortingLayer -= 1;
+                        hijo2211.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait11()
                             {
@@ -830,8 +827,8 @@ public class Raiz : MonoBehaviour
                         hijo2212.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber2212 = Random.Range(anguloMin, anguloMax);
                         hijo2212.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber2212);
-
-                        hijo2212.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        mySortingLayer -= 1;
+                        hijo2212.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait12()
                             {
@@ -845,8 +842,8 @@ public class Raiz : MonoBehaviour
                         hijo2221.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber2221 = Random.Range(anguloMin, anguloMax);
                         hijo2221.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber2221);
-
-                        hijo2221.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        mySortingLayer -= 1;
+                        hijo2221.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait13()
                             {
@@ -860,8 +857,8 @@ public class Raiz : MonoBehaviour
                         hijo2222.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber2222 = Random.Range(anguloMin, anguloMax);
                         hijo2222.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber2222);
-
-                        hijo2222.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        mySortingLayer -= 1;
+                        hijo2222.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait14()
                             {
@@ -878,8 +875,8 @@ public class Raiz : MonoBehaviour
                         hijo22111.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber22111 = Random.Range(anguloMin, anguloMax);
                         hijo22111.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber22111);
-
-                        hijo22111.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        mySortingLayer -= 1;
+                        hijo22111.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait15()
                             {
@@ -893,8 +890,8 @@ public class Raiz : MonoBehaviour
                         hijo22122.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber22122 = Random.Range(anguloMin, anguloMax);
                         hijo22122.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber22122);
-
-                        hijo22122.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        mySortingLayer -= 1;
+                        hijo22122.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait16()
                             {
@@ -908,8 +905,8 @@ public class Raiz : MonoBehaviour
                         hijo22212.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber22212 = Random.Range(anguloMin, anguloMax);
                         hijo22212.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber22212);
-
-                        hijo22212.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        mySortingLayer -= 1;
+                        hijo22212.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait17()
                             {
@@ -923,8 +920,8 @@ public class Raiz : MonoBehaviour
                         hijo22222.transform.localPosition = new Vector3(0,distanciaY,0); 
                         int randomNumber22222 = Random.Range(anguloMin, anguloMax);
                         hijo22222.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber22222);
-
-                        hijo22222.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                        mySortingLayer -= 1;
+                        hijo22222.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
 
                         IEnumerator Wait18()
                             {
@@ -941,15 +938,17 @@ public class Raiz : MonoBehaviour
                 }
             }
         }
+    
+  //  padreObjeto.transform.rotation = Quaternion.Euler(0f, 0f, rotationHijo1);
         
-    hijo1.transform.rotation = Quaternion.Euler(0f, 0f, rotationHijo1);
             
     }
 
        
- void Raiz4()
+ public void Raiz4()
      {
      //crea el primer hijo
+        /*
         GameObject hijo1 = Instantiate(prefactObjeto);
         hijo1.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         hijo1.transform.localPosition = padreObjeto.transform.position;
@@ -961,17 +960,18 @@ public class Raiz : MonoBehaviour
         hijo1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 11;
 
         hijo1.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
-
+        */
         if(bifurcacion>= 1)
         {
                 //crea el sgundo hijo lo posiciona y da una rotación aliatoria en Z
             GameObject hijo2 =  Instantiate(prefactObjeto);
-            hijo2.transform.parent = hijo1.transform;
-            hijo2.transform.localPosition = new Vector3(0,distanciaY,0);
+            hijo2.transform.parent = padreObjeto.transform;
+            //hijo2.transform.localPosition = new Vector3(0,distanciaY,0);
+
                 // se ajustan los angulos para que la raiz centran apunte mas al fondo
             int randomNumber = Random.Range(-60, 60);
             hijo2.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber);
-            hijo2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
+            hijo2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
              IEnumerator Wait()
                 {
                     yield return new WaitForSeconds(velocidadAnimacion);
@@ -980,12 +980,13 @@ public class Raiz : MonoBehaviour
              StartCoroutine(Wait());
 
                  //crea el tercer hijo lo posiciona y da una rotación aliatoria en Z
+             mySortingLayer -= 1;
             GameObject hijo3 =  Instantiate(prefactObjeto);
-            hijo3.transform.parent = hijo1.transform;
-            hijo3.transform.localPosition = new Vector3(0,distanciaY,0);
+            hijo3.transform.parent = padreObjeto.transform;
+           // hijo3.transform.localPosition = new Vector3(0,distanciaY,0);
             int randomNumber2 = Random.Range(anguloMin, anguloMax);
             hijo3.transform.localRotation = Quaternion.Euler(0f, 0f, randomNumber2);
-             hijo3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
+             hijo3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = mySortingLayer;
             IEnumerator Wait1()
                 {
                     yield return new WaitForSeconds(velocidadAnimacion);

@@ -19,7 +19,12 @@ public class AnimatorGusano : MonoBehaviour
     public Vector3 posicion1;
     public Vector3 posicion2;
     public float velocidadMuerte = 0.5f;
-
+    [SerializeField] private AudioClip[] audioSalto;
+   // [SerializeField] private AudioClip audioAtaque;
+    public int Salto7;
+    private int caminar4;
+    [SerializeField] private AudioClip[] audioCaminar;
+    public bool der;
 
    
 
@@ -34,7 +39,7 @@ public class AnimatorGusano : MonoBehaviour
       
         if(control==false)
         {
-            Debug.Log("update");
+            
                         //caminar con normal o con remolino
             anim.SetBool("Walking", false);
             anim.SetBool("Swirl", false);
@@ -43,10 +48,6 @@ public class AnimatorGusano : MonoBehaviour
             {
                anim.SetBool("Swirl", true); 
             }
-            
-
-
-
 
             if(Input.GetKey("d") || Input.GetKey("right"))
             {
@@ -54,6 +55,7 @@ public class AnimatorGusano : MonoBehaviour
                gameObject.transform.localScale = new Vector3 (escalaInicial.x * 1f,escalaInicial.y , escalaInicial.z);  
               
                 anim.SetBool("Walking", true);
+                caminar4 = Random.Range(0,3);
                 
             }
 
@@ -63,6 +65,7 @@ public class AnimatorGusano : MonoBehaviour
             gameObject.transform.localScale = new Vector3 (escalaInicial.x * -1f,escalaInicial.y , escalaInicial.z);
             
                 anim.SetBool("Walking", true);
+                caminar4 = Random.Range(0,3);
             }
 
             if(remolino ==true)
@@ -105,32 +108,24 @@ public class AnimatorGusano : MonoBehaviour
                 }
             }
 
-            
-
-
-
                 //Saltar
              anim.SetBool("Jump", false);
-            if(Input.GetKey("space"))
+            if(Input.GetKeyDown("space"))
             {
                 anim.SetBool("Jump", true);
-                saltando = true;
-               StartCoroutine(WaitS());
-                saltando = false;
+                
+                Salto7 = Random.Range(0,7);
+                AudioController.Instance.EjecutarSonido(audioSalto[Salto7]);
+                Debug.Log(Salto7);
+                StartCoroutine(WaitS());
+              
             }
             
-                //Ataque
-            anim.SetBool("Attack", false);
-            if(Input.GetKey("q"))
-            {
-                anim.SetBool("Attack", true);
-
-               
-            }
+           
 
                 // Caida
 
-             anim.SetBool("Falling", false);
+             
             if( callendo == true)
             {
                 anim.SetBool("Falling", true);    
@@ -152,11 +147,15 @@ public class AnimatorGusano : MonoBehaviour
 
     }
 
+   
+
     private IEnumerator WaitS()
     {
         Debug.Log("Empezando a esperar");
-        yield return new WaitForSeconds(2f);
+        saltando = true;
+        yield return new WaitForSeconds(0.7f);
         Debug.Log("Finalizando la espera");
+          saltando = false;
     }
 
     //Falta decidir si se usa OnCollisionStay2D o OnCollisionEnter2D

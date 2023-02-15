@@ -10,6 +10,7 @@ public class MemoryTrigger : MonoBehaviour
     public bool isEnd;
     bool startMovinOut;
     public GameObject cam, targetPos;
+    public GameObject padreRaiz;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class MemoryTrigger : MonoBehaviour
         {
             character.GetComponent<PlayerMovement>().speed = 0;
             memory.SetActive(true);
+            padreRaiz.GetComponent<Raiz>().Raiz3();
         }
     }
 
@@ -52,7 +54,7 @@ public class MemoryTrigger : MonoBehaviour
     IEnumerator WaitToEnd()
     {
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(5);
     }
 
 }

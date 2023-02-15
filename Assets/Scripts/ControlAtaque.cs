@@ -9,7 +9,9 @@ public class ControlAtaque : MonoBehaviour
     [SerializeField] private float radioGolpe;
     [SerializeField] private float dañoGolpe;
     [SerializeField] GameObject wormie;
+    [SerializeField] GameObject wormieHermano;
     public bool controlGusano = false;
+     [SerializeField] private AudioClip audioAtaque;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +24,13 @@ public class ControlAtaque : MonoBehaviour
         controlGusano = wormie.GetComponent<AnimatorGusano>().control;
         if(controlGusano==false)
         {
-
-             if(Input.GetKey("q"))
+            wormieHermano.GetComponent<Animator>().SetBool("Attack", false);
+             if(Input.GetKeyDown("g"))
             
             {
                 Golpe();  
+            wormieHermano.GetComponent<Animator>().SetBool("Attack", true);
+                AudioController.Instance.EjecutarSonido(audioAtaque);
 
             }
         }

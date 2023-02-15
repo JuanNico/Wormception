@@ -15,7 +15,7 @@ public class AnimeitorCucaracho : MonoBehaviour
     [SerializeField] private Transform[] puntoMovimiento;
     [SerializeField] private float distanciaMinima;
     private int numeroAleatorio;
-
+ 
     //variables para vida
 
     [SerializeField] private int vida = 1;
